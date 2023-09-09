@@ -1,6 +1,6 @@
 CREATE TABLE INGREDIENT
 (
-    ID               INT PRIMARY KEY AUTO_INCREMENT,
+    ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
     NAME             VARCHAR(255) NOT NULL,
     DESCRIPTION      VARCHAR(255),
     PRICE            BIGINT,
@@ -16,7 +16,7 @@ VALUES ('Milk', 'Basic ingredient', '1', 'Viktoria Delija', '2023-09-09', 'Vikto
        ('Bread', 'Basic ingredient', '1', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
 CREATE TABLE AUTHOR
 (
-    ID               INT PRIMARY KEY AUTO_INCREMENT,
+    ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
     FIRSTNAME        VARCHAR(255) NOT NULL,
     LASTNAME         VARCHAR(255) NOT NULL,
     EMAIL            VARCHAR(255) NOT NULL,
@@ -33,7 +33,7 @@ INSERT INTO AUTHOR (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ROLE, CREATED_BY, DATE
 VALUES ('Viktoria', 'Delija', 'viktoria.delija@example.com', '123', 'Admin', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
 CREATE TABLE RECIPE
 (
-    ID               INT PRIMARY KEY AUTO_INCREMENT,
+    ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
     NAME             VARCHAR(255) NOT NULL,
     DESCRIPTION      VARCHAR(255) NOT NULL,
     INGREDIENTS      VARCHAR(255) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE RECIPE
 );
 CREATE TABLE MY_RECIPES
 (
-    ID               INT PRIMARY KEY AUTO_INCREMENT,
+    ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
     AUTHOR_ID        BIGINT NOT NULL,
     RECIPE_ID        BIGINT NOT NULL,
     CREATED_BY       VARCHAR(255),
@@ -62,7 +62,7 @@ CREATE TABLE MY_RECIPES
 );
 CREATE TABLE LIST_INGREDIENTS
 (
-    ID               INT PRIMARY KEY AUTO_INCREMENT,
+    ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
     RECIPE_ID        BIGINT NOT NULL,
     INGREDIENT_ID    BIGINT NOT NULL,
     CREATED_BY       VARCHAR(255),
