@@ -18,6 +18,7 @@ public class IngredientFacadeImpl implements IngredientFacade {
         return ingredientService.getAll().stream().map(i -> {
             IngredientDtoShort ingredientDtoShort = new IngredientDtoShort();
             ingredientDtoShort.setName(i.getName());
+            ingredientDtoShort.setID(i.getID());
             return ingredientDtoShort;
         }).collect(Collectors.toList());
     }
