@@ -4,6 +4,7 @@ CREATE TABLE INGREDIENT
     NAME             VARCHAR(255) NOT NULL,
     DESCRIPTION      VARCHAR(255),
     PRICE            BIGINT,
+    TYPE             VARCHAR(255),
     PICTURE          BLOB,
     CREATED_BY       VARCHAR(255),
     DATE_OF_CREATION DATETIME,
@@ -11,9 +12,9 @@ CREATE TABLE INGREDIENT
     DATE_OF_CHANGE   DATETIME,
     ACTIVITY         BOOLEAN
 );
-INSERT INTO INGREDIENT (NAME, DESCRIPTION, PRICE, CREATED_BY, DATE_OF_CREATION, CHANGED_BY, DATE_OF_CHANGE, ACTIVITY)
-VALUES ('Milk', 'Basic ingredient', '1', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1),
-       ('Bread', 'Basic ingredient', '1', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
+INSERT INTO INGREDIENT (NAME, DESCRIPTION, PRICE, TYPE, CREATED_BY, DATE_OF_CREATION, CHANGED_BY, DATE_OF_CHANGE, ACTIVITY)
+VALUES ('Milk', 'Basic ingredient', '1', 'Dairy', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1),
+       ('Bread', 'Basic ingredient', '1', 'Bread', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
 CREATE TABLE AUTHOR
 (
     ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -30,7 +31,8 @@ CREATE TABLE AUTHOR
 );
 INSERT INTO AUTHOR (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ROLE, CREATED_BY, DATE_OF_CREATION, CHANGED_BY,
                     DATE_OF_CHANGE, ACTIVITY)
-VALUES ('Viktoria', 'Delija', 'viktoria.delija@example.com', '123', 'Admin', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
+VALUES ('Viktoria', 'Delija', 'viktoria.delija@example.com', '123', 'Admin', 'Viktoria Delija', '2023-09-09',
+        'Viktoria Delija', '2023-09-09', 1);
 CREATE TABLE RECIPE
 (
     ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
