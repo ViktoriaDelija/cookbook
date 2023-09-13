@@ -15,7 +15,13 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public List<Ingredient> getAll() {
-        System.out.println(ingredientRepository.findAll());
         return ingredientRepository.findAll();
+    }
+
+    @Override
+    public Ingredient getById(Long ingId) {
+        return ingredientRepository
+                .findById(ingId)
+                .orElseThrow(() -> new IllegalArgumentException("Ingredient not found!"));
     }
 }
