@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IngredientService {
     List<Ingredient> getAll();
+
+    Ingredient getById(Long ingId);
 }
