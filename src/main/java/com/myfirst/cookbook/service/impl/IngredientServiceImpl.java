@@ -35,4 +35,9 @@ public class IngredientServiceImpl implements IngredientService {
         ingredient.setDateofCreation(LocalDateTime.now());
         ingredientRepository.save(ingredient);
     }
+
+    @Override
+    public void deleteIngredient(Long ingId) {
+        ingredientRepository.deleteById(ingId);
+    }
 }

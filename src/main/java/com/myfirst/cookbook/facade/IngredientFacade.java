@@ -13,4 +13,6 @@ public interface IngredientFacade {
     IngredientDto getById(Long ingId);
 
     void saveNewIngredient(IngredientForm ingredientForm);
+
+    void deleteIngredient(Long ingId);
 }

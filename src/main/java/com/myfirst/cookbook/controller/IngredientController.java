@@ -30,4 +30,8 @@ public class IngredientController {
     public void postNewIngredient(@RequestBody IngredientForm ingredientForm){
         ingredientFacade.saveNewIngredient(ingredientForm);
     }
+    @DeleteMapping("/delete/{ingId}")
+    public void deleteIngredient(@PathVariable Long ingId){
+        ingredientFacade.deleteIngredient(ingId);
+    }
 }
