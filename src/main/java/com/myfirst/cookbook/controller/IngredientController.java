@@ -30,4 +30,12 @@ public class IngredientController {
     public void postNewIngredient(@RequestBody IngredientForm ingredientForm){
         ingredientFacade.saveNewIngredient(ingredientForm);
     }
+    @DeleteMapping("/delete/{ingId}")
+    public void deleteIngredient(@PathVariable Long ingId){
+        ingredientFacade.deleteIngredient(ingId);
+    }
+    @PutMapping("/edit/{ingId}")
+    public ResponseEntity<IngredientDto> editIngredient(@PathVariable Long ingId, @RequestBody IngredientForm ingredientForm){
+        return ResponseEntity.ok(ingredientFacade.editIngredient(ingId, ingredientForm));
+    }
 }
