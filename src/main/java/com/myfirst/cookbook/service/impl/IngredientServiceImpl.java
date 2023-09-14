@@ -40,4 +40,11 @@ public class IngredientServiceImpl implements IngredientService {
     public void deleteIngredient(Long ingId) {
         ingredientRepository.deleteById(ingId);
     }
+
+    @Override
+    public Ingredient editIngredident(Ingredient ingredient) {
+        ingredient.setChangedBy("HardcodedEDITED");
+        ingredient.setDateOfChange(LocalDateTime.now());
+        return ingredientRepository.save(ingredient);
+    }
 }

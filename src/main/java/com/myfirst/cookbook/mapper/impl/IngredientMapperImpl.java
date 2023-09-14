@@ -15,6 +15,7 @@ public class IngredientMapperImpl implements IngredientMapper {
         ingredientDto.setDescription(ingredient.getDescription());
         ingredientDto.setPrice(ingredient.getPrice());
         ingredientDto.setIngType(ingredient.getIngType());
+        ingredientDto.setID(ingredient.getID());
         return ingredientDto;
     }
 
