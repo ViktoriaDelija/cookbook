@@ -13,8 +13,8 @@ CREATE TABLE INGREDIENT
     ACTIVITY         BOOLEAN
 );
 INSERT INTO INGREDIENT (NAME, DESCRIPTION, PRICE, TYPE, CREATED_BY, DATE_OF_CREATION, CHANGED_BY, DATE_OF_CHANGE, ACTIVITY)
-VALUES ('Milk', 'Basic ingredient', '1', 'Dairy', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1),
-       ('Bread', 'Basic ingredient', '1', 'Bread', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
+VALUES ('Milk', 'Basic ingredient', 1, 'Dairy', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1),
+       ('Bread', 'Basic ingredient', 1, 'Bread', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
 CREATE TABLE AUTHOR
 (
     ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
