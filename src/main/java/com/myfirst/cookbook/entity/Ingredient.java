@@ -15,7 +15,7 @@ public class Ingredient extends BasicEntity{
     @Column(name="DESCRIPTION")
     private String description;
     @Column(name="PRICE")
-    private String price;
+    private Long price;
     @Column(name="TYPE")
     private String ingType;
     @Column(name="PICTURE")
