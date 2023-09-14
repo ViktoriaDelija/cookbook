@@ -46,4 +46,13 @@ public class IngredientFacadeImpl implements IngredientFacade {
     public void deleteIngredient(Long ingId) {
         ingredientService.deleteIngredient(ingId);
     }
+
+    @Override
+    public IngredientDto editIngredient(Long ingId, IngredientForm ingredientForm) {
+        Ingredient ingredient = ingredientService.getById(ingId);
+        Ingredient ingredientEdited = ingredientMapper.mapIngredientForm(ingredient, ingredientForm);
+        ingredientService.editIngredident(ingredientEdited);
+        return ingredientMapper.mapIngredient(ingredientEdited);
+    }
+
 }
