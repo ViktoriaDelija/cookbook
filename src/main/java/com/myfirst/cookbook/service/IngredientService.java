@@ -9,4 +9,6 @@ public interface IngredientService {
     List<Ingredient> getAll();
 
     Ingredient getById(Long ingId);
+
+    void saveIngredient(Ingredient ingredient);
 }

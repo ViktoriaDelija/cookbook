@@ -4,6 +4,7 @@ import com.myfirst.cookbook.dto.IngredientDto;
 import com.myfirst.cookbook.dto.IngredientDtoShort;
 import com.myfirst.cookbook.entity.Ingredient;
 import com.myfirst.cookbook.facade.IngredientFacade;
+import com.myfirst.cookbook.form.IngredientForm;
 import com.myfirst.cookbook.mapper.IngredientMapper;
 import com.myfirst.cookbook.service.IngredientService;
 import lombok.AllArgsConstructor;
@@ -32,5 +33,12 @@ public class IngredientFacadeImpl implements IngredientFacade {
     public IngredientDto getById(Long ingId) {
         Ingredient ingredient = ingredientService.getById(ingId);
         return ingredientMapper.mapIngredient(ingredient);
+    }
+
+    @Override
+    public void saveNewIngredient(IngredientForm ingredientForm) {
+        Ingredient ingredient = new Ingredient();
+        ingredient = ingredientMapper.mapIngredientForm(ingredient, ingredientForm);
+        ingredientService.saveIngredient(ingredient);
     }
 }

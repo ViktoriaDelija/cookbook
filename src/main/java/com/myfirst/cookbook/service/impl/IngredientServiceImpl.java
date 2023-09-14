@@ -6,6 +6,7 @@ import com.myfirst.cookbook.service.IngredientService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -23,5 +24,15 @@ public class IngredientServiceImpl implements IngredientService {
         return ingredientRepository
                 .findById(ingId)
                 .orElseThrow(() -> new IllegalArgumentException("Ingredient not found!"));
+    }
+
+    @Override
+    public void saveIngredient(Ingredient ingredient) {
+        ingredient.setActivity(true);
+        ingredient.setCreatedBy("Hardcoded");
+        ingredient.setChangedBy("Hardcoded");
+        ingredient.setDateOfChange(LocalDateTime.now());
+        ingredient.setDateofCreation(LocalDateTime.now());
+        ingredientRepository.save(ingredient);
     }
 }
