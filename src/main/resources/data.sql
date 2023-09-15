@@ -12,7 +12,8 @@ CREATE TABLE INGREDIENT
     DATE_OF_CHANGE   DATETIME,
     ACTIVITY         BOOLEAN
 );
-INSERT INTO INGREDIENT (NAME, DESCRIPTION, PRICE, TYPE, CREATED_BY, DATE_OF_CREATION, CHANGED_BY, DATE_OF_CHANGE, ACTIVITY)
+INSERT INTO INGREDIENT (NAME, DESCRIPTION, PRICE, TYPE, CREATED_BY, DATE_OF_CREATION, CHANGED_BY, DATE_OF_CHANGE,
+                        ACTIVITY)
 VALUES ('Milk', 'Basic ingredient', 1, 'Dairy', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1),
        ('Bread', 'Basic ingredient', 1, 'Bread', 'Viktoria Delija', '2023-09-09', 'Viktoria Delija', '2023-09-09', 1);
 CREATE TABLE AUTHOR
@@ -38,9 +39,9 @@ CREATE TABLE RECIPE
     ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
     NAME             VARCHAR(255) NOT NULL,
     DESCRIPTION      VARCHAR(255) NOT NULL,
-    INGREDIENTS      VARCHAR(255) NOT NULL,
+    INGREDIENTS      VARCHAR(255),
     INSTRUCTIONS     VARCHAR(255) NOT NULL,
-    AUTHOR_ID        BIGINT       NOT NULL,
+    AUTHOR_ID        BIGINT,
     PICTURE          BLOB,
     CREATED_BY       VARCHAR(255),
     DATE_OF_CREATION DATETIME,
@@ -49,6 +50,13 @@ CREATE TABLE RECIPE
     ACTIVITY         BOOLEAN,
     FOREIGN KEY (AUTHOR_ID) REFERENCES AUTHOR
 );
+INSERT INTO RECIPE(NAME, DESCRIPTION, INSTRUCTIONS, CREATED_BY, DATE_OF_CREATION, CHANGED_BY, DATE_OF_CHANGE, ACTIVITY)
+VALUES ('Tomato soup', 'Its a soup, just a simple plain tomato soup', 'Stir vigorously', 'Viktoria Delija',
+        '2023-09-15',
+        'Viktoria Delija', '2023-09-15', 1),
+       ('Enchilladas', 'This is a perfect mix of every flavor put together', 'Assemble with care', 'Viktoria Delija',
+        '2023-09-15',
+        'Viktoria Delija', '2023-09-15', 1);
 CREATE TABLE MY_RECIPES
 (
     ID               BIGINT PRIMARY KEY AUTO_INCREMENT,
