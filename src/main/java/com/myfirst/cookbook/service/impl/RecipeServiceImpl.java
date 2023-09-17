@@ -1,6 +1,5 @@
 package com.myfirst.cookbook.service.impl;
 
-import com.myfirst.cookbook.dto.RecipeDtoShort;
 import com.myfirst.cookbook.entity.Recipe;
 import com.myfirst.cookbook.repository.RecipeRepository;
 import com.myfirst.cookbook.service.RecipeService;
@@ -41,5 +40,12 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public void deleteRecipe(Long recId) {
         recipeRepository.deleteById(recId);
+    }
+
+    @Override
+    public Recipe editRecipe(Recipe recipe) {
+        recipe.setChangedBy("HardcodedEdited");
+        recipe.setDateOfChange(LocalDateTime.now());
+        return recipeRepository.save(recipe);
     }
 }

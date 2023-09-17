@@ -14,4 +14,6 @@ public interface RecipeFacade {
     void saveNewRecipe(RecipeForm recipeForm);
 
     void deleteRecipe(Long recId);
+
+    RecipeDto editRecipe(Long recId, RecipeForm recipeForm);
 }

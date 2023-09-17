@@ -46,4 +46,13 @@ public class RecipeFacadeImpl implements RecipeFacade {
     public void deleteRecipe(Long recId) {
         recipeService.deleteRecipe(recId);
     }
+
+    @Override
+    public RecipeDto editRecipe(Long recId, RecipeForm recipeForm) {
+        Recipe recipe = recipeService.getById(recId);
+        Recipe recipeEdited = recipeMapper.mapRecipeForm(recipe, recipeForm);
+        recipeService.editRecipe(recipeEdited);
+        return recipeMapper.mapRecipe(recipeEdited);
+
+    }
 }

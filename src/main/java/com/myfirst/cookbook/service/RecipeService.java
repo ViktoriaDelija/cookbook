@@ -1,6 +1,5 @@
 package com.myfirst.cookbook.service;
 
-import com.myfirst.cookbook.dto.RecipeDtoShort;
 import com.myfirst.cookbook.entity.Recipe;
 
 import java.util.List;
@@ -13,4 +12,6 @@ public interface RecipeService {
     void saveRecipe(Recipe recipe);
 
     void deleteRecipe(Long recId);
+
+    Recipe editRecipe(Recipe recipe);
 }

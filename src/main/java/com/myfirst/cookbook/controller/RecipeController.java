@@ -35,4 +35,8 @@ public class RecipeController {
     public void deleteRecipe(@PathVariable Long recId){
         recipeFacade.deleteRecipe(recId);
     }
+    @PutMapping("/edit/{recId}")
+    public ResponseEntity<RecipeDto> editRecipe(@PathVariable Long recId, @RequestBody RecipeForm recipeForm){
+        return ResponseEntity.ok(recipeFacade.editRecipe(recId, recipeForm));
+    }
 }
