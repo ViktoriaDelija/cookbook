@@ -1,9 +1,10 @@
 package com.myfirst.cookbook.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,11 +15,20 @@ public class Recipe extends BasicEntity{
     @Column(name="DESCRIPTION")
     private String description;
     @Column(name="INGREDIENTS")
-    private String ingredients; //change this to join table
+    private String ingredients;
     @Column(name="INSTRUCTIONS")
     private String instructions;
-    @Column(name="AUTHOR_ID")
-    private String author; //change this, this is going to be a join column
+    @OneToOne
+    @JoinColumn(name="AUTHOR_ID")
+    private Author author;
+
     @Column(name="PICTURE")
     private String picture;
+
+    @ManyToMany
+    @JoinTable(name="LIST_INGREDIENTS",
+            joinColumns = @JoinColumn(name="RECIPE_ID"),
+            inverseJoinColumns =@JoinColumn(name="INGREDIENT_ID"))
+    private List<Ingredient> ingredientsInRecipe = new ArrayList<>();
+
 }
