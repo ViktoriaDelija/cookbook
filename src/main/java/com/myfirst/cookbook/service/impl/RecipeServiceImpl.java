@@ -7,6 +7,7 @@ import com.myfirst.cookbook.service.RecipeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,5 +25,16 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeRepository
                 .findById(recId)
                 .orElseThrow(()-> new IllegalArgumentException("Recipe not found!"));
+    }
+
+    @Override
+    public void saveRecipe(Recipe recipe) {
+        recipe.setActivity(true);
+        recipe.setCreatedBy("Hardcoded");
+        recipe.setChangedBy("Hardcoded");
+        recipe.setDateOfChange(LocalDateTime.now());
+        recipe.setDateofCreation(LocalDateTime.now());
+        recipeRepository.save(recipe);
+
     }
 }

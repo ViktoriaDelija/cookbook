@@ -9,4 +9,6 @@ public interface RecipeService {
     List<Recipe> getAll();
 
     Recipe getById(Long recId);
+
+    void saveRecipe(Recipe recipe);
 }
