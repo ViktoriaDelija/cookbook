@@ -31,4 +31,8 @@ public class RecipeController {
     public void postNewRecipe(@RequestBody RecipeForm recipeForm){
         recipeFacade.saveNewRecipe(recipeForm);
     }
+    @DeleteMapping("/delete/{recId}")
+    public void deleteRecipe(@PathVariable Long recId){
+        recipeFacade.deleteRecipe(recId);
+    }
 }
