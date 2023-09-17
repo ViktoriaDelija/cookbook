@@ -14,11 +14,11 @@ public class Recipe extends BasicEntity{
     @Column(name="DESCRIPTION")
     private String description;
     @Column(name="INGREDIENTS")
-    private String ingredients;
+    private String ingredients; //change this to join table
     @Column(name="INSTRUCTIONS")
     private String instructions;
     @Column(name="AUTHOR_ID")
-    private Long author;
+    private String author; //change this, this is going to be a join column
     @Column(name="PICTURE")
     private String picture;
 }
