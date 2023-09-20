@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RecipeMapperImpl implements RecipeMapper {
     private final IngredientRepository ingredientRepository;
+
     @Override
     public RecipeDto mapRecipe(Recipe recipe) {
         RecipeDto recipeDto = new RecipeDto();
@@ -32,10 +33,14 @@ public class RecipeMapperImpl implements RecipeMapper {
         recipe.setName(recipeForm.getName());
         recipe.setDescription(recipeForm.getDescription());
         recipe.setInstructions(recipeForm.getInstructions());
-
-        for(Long id: recipeForm.getIngredientIds()){
-            Ingredient ingredient = ingredientRepository.findById(id).get();
-            recipe.getIngredientsInRecipe().add(ingredient);
+        List<Long> ingredients = recipeForm.getIngredientIds();
+        if (ingredients != null) {
+            for (Long id : ingredients) {
+                Ingredient ingredient = ingredientRepository
+                        .findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("Ingredient with this ID does not exist"));
+                recipe.getIngredientsInRecipe().add(ingredient);
+            }
         }
         return recipe;
     }
