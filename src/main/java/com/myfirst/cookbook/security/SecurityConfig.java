@@ -29,7 +29,18 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(
                         request -> request
-                                .requestMatchers(antMatcher("/api/*")).hasAnyRole("ADMIN", "USER")
+                                .requestMatchers(antMatcher("/api/ingredients/new")).hasRole("ADMIN")
+                                .requestMatchers(antMatcher("/api/ingredients/delete/{ingId}")).hasRole("ADMIN")
+                                .requestMatchers(antMatcher("/api/ingredients/edit/{ingId}")).hasRole("ADMIN")
+                                .requestMatchers(antMatcher("/api/recipes/new")).hasAnyRole("ADMIN", "USER")
+                                .requestMatchers(antMatcher("/api/recipes/delete/{recId}")).hasAnyRole("ADMIN", "USER")
+                                .requestMatchers(antMatcher("/api/recipes/edit/{recId}")).hasAnyRole("ADMIN", "USER")
+                                .requestMatchers(antMatcher("/api/login")).permitAll()
+                                .requestMatchers(antMatcher("/api/ingredients")).permitAll()
+                                .requestMatchers(antMatcher("/api/ingredients/{ingId}")).permitAll()
+                                .requestMatchers(antMatcher("/api/recipes")).permitAll()
+                                .requestMatchers(antMatcher("/api/recipes/{recId}")).permitAll()
+
                 )
                 .csrf(csrf -> csrf.disable()).addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

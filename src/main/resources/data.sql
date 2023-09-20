@@ -32,7 +32,7 @@ CREATE TABLE AUTHOR
 );
 INSERT INTO AUTHOR (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ROLE, CREATED_BY, DATE_OF_CREATION, CHANGED_BY,
                     DATE_OF_CHANGE, ACTIVITY)
-VALUES ('Viktoria', 'Delija', 'viktoria.delija@example.com', '123', 'Admin', 'Viktoria Delija', '2023-09-09',
+VALUES ('Viktoria', 'Delija', 'viktoria.delija@example.com', '$2a$12$31FGWdeokRb/WJGvpPZ6k.0YGcJra9LPy/dwzcS.unRJ6HOK1mPKC', 'Admin', 'Viktoria Delija', '2023-09-09',
         'Viktoria Delija', '2023-09-09', 1);
 CREATE TABLE RECIPE
 (
