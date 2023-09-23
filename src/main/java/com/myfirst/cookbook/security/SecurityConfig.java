@@ -24,6 +24,7 @@ public class SecurityConfig {
     private final UserDetailsCustomService userDetailsCustomService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final CorsFilter corsFilter;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
@@ -36,12 +37,12 @@ public class SecurityConfig {
                                 .requestMatchers(antMatcher("/api/recipes/delete/{recId}")).hasAnyRole("ADMIN", "USER")
                                 .requestMatchers(antMatcher("/api/recipes/edit/{recId}")).hasAnyRole("ADMIN", "USER")
                                 .requestMatchers(antMatcher("/api/login")).permitAll()
+                                .requestMatchers(antMatcher("/api/signup")).permitAll()
                                 .requestMatchers(antMatcher("/api/ingredients")).permitAll()
                                 .requestMatchers(antMatcher("/api/ingredients/{ingId}")).permitAll()
                                 .requestMatchers(antMatcher("/api/recipes")).permitAll()
                                 .requestMatchers(antMatcher("/api/recipes/{recId}")).permitAll()
-
-                )
+                                .requestMatchers(antMatcher("/h2-console")).permitAll())
                 .csrf(csrf -> csrf.disable()).addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
@@ -49,6 +50,7 @@ public class SecurityConfig {
                 .httpBasic(httpBasic -> httpBasic.init(http))
                 .build();
     }
+
     @Bean
     public DaoAuthenticationProvider getDaoAuthenticationProvider() {
 
@@ -58,8 +60,10 @@ public class SecurityConfig {
 
         return daoAuthenticationProvider;
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 }
+
