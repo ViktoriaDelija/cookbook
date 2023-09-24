@@ -5,7 +5,9 @@ import com.myfirst.cookbook.entity.Ingredient;
 import com.myfirst.cookbook.entity.Recipe;
 import com.myfirst.cookbook.form.RecipeForm;
 import com.myfirst.cookbook.mapper.RecipeMapper;
+import com.myfirst.cookbook.repository.AuthorRepository;
 import com.myfirst.cookbook.repository.IngredientRepository;
+import com.myfirst.cookbook.repository.RecipeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RecipeMapperImpl implements RecipeMapper {
     private final IngredientRepository ingredientRepository;
+    private final AuthorRepository authorRepository;
 
     @Override
     public RecipeDto mapRecipe(Recipe recipe) {
@@ -33,6 +36,7 @@ public class RecipeMapperImpl implements RecipeMapper {
         recipe.setName(recipeForm.getName());
         recipe.setDescription(recipeForm.getDescription());
         recipe.setInstructions(recipeForm.getInstructions());
+        recipe.setAuthor(authorRepository.findByEmail(recipeForm.getAuthorEmail()).get());
         List<Long> ingredients = recipeForm.getIngredientIds();
         if (ingredients != null) {
             for (Long id : ingredients) {
