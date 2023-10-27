@@ -9,5 +9,6 @@ public class RecipeForm {
     private String name;
     private String description;
     private String instructions;
+    private String authorEmail;
     private List<Long> ingredientIds;
 }
