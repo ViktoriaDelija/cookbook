@@ -29,8 +29,8 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public void saveRecipe(Recipe recipe) {
         recipe.setActivity(true);
-        recipe.setCreatedBy("Hardcoded");
-        recipe.setChangedBy("Hardcoded");
+        recipe.setCreatedBy(recipe.getAuthor().getFirstName()+" "+recipe.getAuthor().getLastName());
+        recipe.setChangedBy(recipe.getAuthor().getFirstName()+" "+recipe.getAuthor().getLastName());
         recipe.setDateOfChange(LocalDateTime.now());
         recipe.setDateofCreation(LocalDateTime.now());
         recipeRepository.save(recipe);
